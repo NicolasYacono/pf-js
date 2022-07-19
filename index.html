@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image:  linear-gradient(to left, 	rgb(47, 194, 62), rgb(81, 163, 89))">
+
+    <header class="container-fluid d-flex justify-content-center border-2 w-50 mt-2" >
+      <h1 class="text-success bg-dark bg-gradient mb-0 my-2 p-4 mx-1 fs-2 border rounded-pill border-end-0 border-bottom-0 text-light border-start-0">La Sede 
+        <small class="text-muted fs-5">Club Cannabico</small>
+      </h1>
+      <img style="height: fit-content" src="/assets/icons/icono-hoja.png" class="img-fluid" alt="...">
+    </header>
+    <div>
+      <ul class="nav nav-pills justify-content-center mt-4 fw-bold">
+        <li class="nav-item">
+          <a class="nav-link text-light mx-4 fs-4" aria-current="page" href="#">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light mx-4 fs-4" href="#">Sepas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light mx-4 fs-4" href="#">Contenido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light mx-4 fs-4" href="#">Asesoramiento</a>
+        </li>
+      </ul>
+
+      <div class="bg-dark text-light text-center mx-4 my-4 p-2 border-2 ">
+      <h3>Bienvenida/o! Le informamos que necesita ser mayor de edad y poseer reprocann para poder inscribirse.</h3>
+      <h4>Ambos seran corroborados con el numero de DNI.</h4>
+      </div>
+    
+    </div>
+    <form id="formulario">
+      <div class="mb-0 mx-5 my-2">
+          <label class="form-label fw-bold">DNI</label>
+          <input id="dni" class="form-control" type="text" placeholder="Ingrese su DNI sin puntos">
+      </div>
+      <div class="mb-0 mx-5 my-2">
+          <label class="form-label fw-bold">Nombre</label>
+          <input id="nombre" class="form-control" type="text" placeholder="Inngresa un nombre">
+      </div>
+      <div class="d-grid gap-2 mx-5 my-3">
+          <button type="submit" class="btn btn-primary fw-bold">Registrar</button>
+      </div>
+  </form>
+  <div class="col-md-6">
+    <table id="tablaProductos" class="table table-striped table-hover mx-5">
+        <thead>
+            <tr>
+                <td>DNI</td>
+                <td>Nombre</td>
+            </tr>
+            </th>
+            
+            <tbody class="tabla">
+                
+            </tbody>
+            
+    </table>
+</div>
+</div>
+</div>
+    <div class="container-fluid justify-content-center mt-2 mb-3 p-2">
+      <figure class="text-center border rounded-start border-end-0 border-bottom-0 mt-4 bg-dark bg-opacity-75">
+        <blockquote class="blockquote text-light">
+          <p>"When you smoke marijuana, it reveals you to yourself"</p>
+        </blockquote>
+        <figcaption class="blockquote-footer text-light mb-1 text-opacity-75">
+        <cite title="Source Title">Bob Marley</cite>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="d-flex flex-row justify-content-evenly mt-4">
+      <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
+        <img src="/assets/imgs/coco1.JPG" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Gratuita</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Obtener</a>
+        </div>
+      </div>
+      <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
+        <img src="/assets/imgs/DSC_4526.JPG" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Clasica</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Obtener</a>
+        </div>
+      </div>
+      <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
+        <img src="/assets/imgs/DSC_4537.JPG" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Premium</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Obtener</a>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid mt-5 mb-2 my-0 bg-dark border rounded-pill p-2 border-end-0 border-bottom-0">
+      <div class="row">
+        <div class="col">
+          <h2 class="fs-4 mt-2 text-light mx-3">La Sede crece</h2>
+        </div>
+        <div class="col-6 fs-6 text-light">
+          <img class="mx-2" src="/assets/icons/instagram.png" alt="logo instagram"> Instagram: lasedecc
+          <img class="mx-2" src="/assets/icons/facebook.png" alt="logo facebook"> Facebook: La Sede CC
+        </div>
+        <div class="col text-light">
+          Todos los derechos reservados © 
+            <b>La Sede</b>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="main.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
