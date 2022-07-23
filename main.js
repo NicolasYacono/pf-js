@@ -1,3 +1,4 @@
+//Membresias objeto
 class Membresia {
     constructor(tipo, cursos, gramos, contenido, asesoramiento){
         this.tipo = tipo;
@@ -8,13 +9,19 @@ class Membresia {
     }
    
 }
-
+//Array objetos con membresias
 const membresias = [
     new Membresia ('Gratuita', 'No incluye cursos', 'No incluye gramos mensuales', 'Contenido de la web', 'No incluye asesoramiento'),
     new Membresia ('Clasica', 'Cursos basicos', '3, 9 o 15 gramos mensuales', 'Contenido de la web', 'Primer asesoramiento gratis'),
     new Membresia ('Premium', 'Todos los cursos online', '10, 20 o 30 gramos mensuales', 'Contenido de la web', 'Asesoramiento mensual')
 ]
 
+// Membresias filtradas por metodo find para separarlas
+let mgratuita = membresias.find((item) => item.tipo === 'Gratuita');
+let mclasica = membresias.find((item) => item.tipo === 'Clasica');
+let mpremium = membresias.find((item) => item.tipo === 'Premium');
+
+//Objeto Gramos
 class Gramos {
     constructor(cantidad, precio){
         this.cantidad = cantidad;
@@ -25,6 +32,7 @@ class Gramos {
     }
 }
 
+//Array objetos Gramos
 const gramosMensuales = [
     new Gramos (3, 1100),
     new Gramos (9, 1050),
@@ -34,6 +42,7 @@ const gramosMensuales = [
     new Gramos (30, 950)
 ]
 
+//Variables con los importes de las membresias segun gramos basados en gramosMensuaales
 const g3 = new Gramos (3, 1100);
 const g9 = new Gramos (9, 1050);
 const g15 = new Gramos (15, 950);
@@ -41,6 +50,65 @@ const g10 = new Gramos (10, 1100);
 const g20 = new Gramos (20, 1000);
 const g30 = new Gramos (30, 950);
 
+
+
+//ARRAY NAV - DOM
+let nav = ["Cursos", "Sepas", "Contenido", "Asesoramiento"];
+
+let cnav = `<a>${nav[0]}</a>`;
+document.querySelector('#cursosNav').innerHTML = cnav;
+
+let snav = `<a>${nav[1]}</a>`;
+document.querySelector('#sepasNav').innerHTML = snav;
+
+let conav = `<a>${nav[2]}</a>`;
+document.querySelector('#contenidoNav').innerHTML = conav;
+
+let anav = `<a>${nav[3]}</a>`;
+document.querySelector('#asesoramientoNav').innerHTML = anav;
+
+
+
+//DOM de membresias en las Cards
+function membresiasCards(){
+    let gratuitaM = `<h5>${mgratuita.tipo}</h5>`;
+document.querySelector('#membresia1').innerHTML = gratuitaM;
+let gratuitaMi = `<li>${mgratuita.cursos}</li>
+            <li>${mgratuita.gramos}</li>
+            <li>${mgratuita.contenido}</li>
+            <li>${mgratuita.asesoramiento}</li>`;
+document.querySelector('#incluye1').innerHTML = gratuitaMi;
+
+let clasicaM = `<h5>${mclasica.tipo}</h5>`;
+document.querySelector('#membresia2').innerHTML = clasicaM;
+let clasicaMi = `<li>${mclasica.cursos}</li>
+            <li>${mclasica.gramos}</li>
+            <li>${mclasica.contenido}</li>
+            <li>${mclasica.asesoramiento}</li>`;
+document.querySelector('#incluye2').innerHTML = clasicaMi;
+
+let premiumM = `<h5>${mpremium.tipo}</h5>`;
+document.querySelector('#membresia3').innerHTML = premiumM;
+let premiumMi = `<li>${mpremium.cursos}</li>
+            <li>${mpremium.gramos}</li>
+            <li>${mpremium.contenido}</li>
+            <li>${mpremium.asesoramiento}</li>`;
+document.querySelector('#incluye3').innerHTML = premiumMi;
+}
+membresiasCards();
+
+
+let usuario = [];
+
+let formulario;
+let dni;
+let nombre;
+let usuario1;
+let dniu;
+
+
+
+//Objeto Usuario modal
 class Usuario {
     constructor(dni, nombre){
         this.dni = dni;
@@ -48,58 +116,53 @@ class Usuario {
     }
 }
 
-mgratuita = membresias.find((item) => item.tipo === 'Gratuita');
-mclasica = membresias.find((item) => item.tipo === 'Clasica');
-mpremium = membresias.find((item) => item.tipo === 'Premium');
-
-let usuario = [];
-let formulario;
-let dni;
-let nombre;
-let tabla;
-
 function inicializar(){
     formulario = document.getElementById("formulario");
     dni = document.getElementById("dni");
     nombre = document.getElementById("nombre");
-    tabla = document.getElementById("tablaProductos");
 };
 inicializar();
 
+//RESOLVER
+function agregarInfoUsuario(){
+   
+}
+agregarInfoUsuario();
+
 formulario.onsubmit = (event) => {
     event.preventDefault();
-    
     let usuarioNuevo = new Usuario(dni.value, nombre.value);
     usuario.push(usuarioNuevo);
-    limpiarTabla();
+    console.log(usuarioNuevo)
     agregarInfoUsuario();
     formulario.reset();
     
 }
 
-function limpiarTabla() {
-    while(tabla.rows.lenght > 1){
-        tabla.deleteRow(1)
+class UsuariosExperiencias {
+    constructor(nombre, edad, membresia, comentario){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.membresia = membresia;
+        this.comentario = comentario;
+        }
     }
-}
+    
+    const experiencias = [];
+    
+    experiencias.push(new UsuariosExperiencias("Eli", "30", "Premium", 'Comentario: "100% recomendada!!"'));
+    experiencias.push(new UsuariosExperiencias("Carlos", "45", "Clasica", 'Comentario: "La calidad es exelente y el servicio tmb."'));
+    experiencias.push(new UsuariosExperiencias("Juan", "24", "Gratuita", 'Comentario: "La consulta gratuita fue muy buena, voy por una membresia Premium!!"'));
+    
+    
+    
+    function expUsuarios(){
+    
+    }
+    expUsuarios();
+    
 
-function agregarInfoUsuario(){
-usuario.forEach(usuario => {
-    let tabla = document.querySelector(".tabla")
-    let filaTabla = document.createElement("tr")
-
-    filaTabla.innerHTML = `
-    <td>${usuario.dni}</td>
-    <td>${usuario.nombre}</td>
-    `
-    tabla.append(filaTabla)
-
-});
-}
-agregarInfoUsuario();
-
-
-while(dni.length >= 7){
+/* while(dni.length >= 7){
     if(dni >= 45000000){
         console.log("Lo sentimos es menor de edad")
     } else {
@@ -142,24 +205,5 @@ while(dni.length >= 7){
     } 
     
 }; 
+ */
 
-
-class Usuarios {
-constructor(nombre, edad, membresia, comentario){
-    this.nombre = nombre;
-    this.edad = edad;
-    this.membresia = membresia;
-    this.comentario = comentario;
-    }
-}
-
-const experiencias = [];
-
-experiencias.push(new Usuarios("Eli", "30", "Premium", 'Comentario: "100% recomendada!!"'));
-experiencias.push(new Usuarios("Carlos", "45", "Clasica", 'Comentario: "La calidad es exelente y el servicio tmb."'));
-experiencias.push(new Usuarios("Juan", "24", "Gratuita", 'Comentario: "La consulta gratuita fue muy buena, voy por una membresia Premium!!"'));
-
-console.log("Te dejamos algunas experiencias de nuestro/as socios/as:");
-for (const objeto of experiencias){
-    console.log(`${objeto.nombre} \n ${objeto.edad} \n ${objeto.membresia} \n ${objeto.comentario}`);
-};

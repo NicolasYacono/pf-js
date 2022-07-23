@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>La Sede CC</title>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,21 +14,28 @@
       <h1 class="text-success bg-dark bg-gradient mb-0 my-2 p-4 mx-1 fs-2 border rounded-pill border-end-0 border-bottom-0 text-light border-start-0">La Sede 
         <small class="text-muted fs-5">Club Cannabico</small>
       </h1>
-      <img style="height: fit-content" src="/assets/icons/icono-hoja.png" class="img-fluid" alt="...">
+      <img style="height: fit-content" src="/assets/icons/icono-hoja.png" class="img-fluid p-2" alt="...">
+      <div class="d-flex flex-row-reverse mx-1 mt-4">
+        <img style="height:fit-content" src="/assets/icons/icons8-pase-de-seguridad-24.png" alt="">
+        <p id="usuario1" class="fw-bold mx-1">Usuario</p>
+        <img style="height:fit-content"  src="/assets/icons/icons8-usuario-30.png" alt="">
+        <p id="dniu" class="fw-bold mx-1">Dni</p>
+      </div>
     </header>
+    
     <div>
       <ul class="nav nav-pills justify-content-center mt-4 fw-bold">
         <li class="nav-item">
-          <a class="nav-link text-light mx-4 fs-4" aria-current="page" href="#">Cursos</a>
+          <a id="cursosNav" class="nav-link text-light mx-4 fs-4" aria-current="page" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light mx-4 fs-4" href="#">Sepas</a>
+          <a id="sepasNav" class="nav-link text-light mx-4 fs-4" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light mx-4 fs-4" href="#">Contenido</a>
+          <a id="contenidoNav" class="nav-link text-light mx-4 fs-4" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light mx-4 fs-4" href="#">Asesoramiento</a>
+          <a id="asesoramientoNav" class="nav-link text-light mx-4 fs-4" href="#"></a>
         </li>
       </ul>
 
@@ -50,8 +57,8 @@
       <div class="d-grid gap-2 mx-5 my-3">
           <button type="submit" class="btn btn-primary fw-bold">Registrar</button>
       </div>
-  </form>
-  <div class="col-md-6">
+    </form>
+  <!-- <div class="col-md-2">
     <table id="tablaProductos" class="table table-striped table-hover mx-5">
         <thead>
             <tr>
@@ -64,10 +71,7 @@
                 
             </tbody>
             
-    </table>
-</div>
-</div>
-</div>
+    </table> -->
     <div class="container-fluid justify-content-center mt-2 mb-3 p-2">
       <figure class="text-center border rounded-start border-end-0 border-bottom-0 mt-4 bg-dark bg-opacity-75">
         <blockquote class="blockquote text-light">
@@ -82,27 +86,70 @@
       <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
         <img src="/assets/imgs/coco1.JPG" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title fw-bold">Gratuita</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Obtener</a>
+          <h5 id="membresia1" class="card-title fw-bold"></h5>
+          <p id="incluye1" class="card-text"></p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Obtener
+          </button>
         </div>
       </div>
       <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
         <img src="/assets/imgs/DSC_4526.JPG" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title fw-bold">Clasica</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Obtener</a>
+          <h5 id="membresia2" class="card-title fw-bold"></h5>
+          <p id="incluye2" class="card-text"></p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Obtener
+          </button>
         </div>
       </div>
       <div class="card bg-dark bg-gradient text-light border-light border-end-0 border-bottom-0 text-center" style="width: 18rem;">
         <img src="/assets/imgs/DSC_4537.JPG" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title fw-bold">Premium</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 id="membresia3" class="card-title fw-bold"></h5>
+          <p id="incluye3" class="card-text"></p>
           <a href="#" class="btn btn-primary">Obtener</a>
         </div>
       </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="carouselExampleControls" class="carousel slide mt-5 bg-dark bg-gradient" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div id="uE" class="carousel-item active text-center text-light">
+          <p>"Eli", "30", "Premium", 'Comentario: "100% recomendada!!"</p>
+        </div>
+        <div class="carousel-item text-center text-light">
+          <p>"Carlos", "45", "Clasica", 'Comentario: "La calidad es exelente y el servicio tmb'</p>
+        </div>
+        <div class="carousel-item text-center text-light">
+          <p>"Juan", "24", "Gratuita", 'Comentario: "La consulta gratuita fue muy buena, voy por una membresia Premium!!"</p>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
     <footer class="container-fluid mt-5 mb-2 my-0 bg-dark border rounded-pill p-2 border-end-0 border-bottom-0">
       <div class="row">
