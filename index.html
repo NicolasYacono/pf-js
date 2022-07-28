@@ -39,7 +39,7 @@
         </li>
       </ul>
     </div>
-<!-- 
+
       <div class="modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -55,8 +55,6 @@
 
             </div>
             
-            
-    
             <form  id="formulario" class="modal-body">
               <div class="mb-0 mx-5 my-2">
                   <label class="form-label fw-bold">DNI</label>
@@ -64,7 +62,7 @@
               </div>
               <div class="mb-0 mx-5 my-2">
                   <label class="form-label fw-bold">Nombre</label>
-                  <input id="nombre" class="form-control" type="text" placeholder="Inngresa un nombre">
+                  <input id="nombre" class="form-control" type="text" placeholder="Ingrese un nombre">
               </div>
               <div class="d-grid gap-2 mx-5 my-3">
                   <button type="submit" class="btn btn-primary fw-bold">Registrar</button>
@@ -72,7 +70,7 @@
             </form>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class="modal" id="myModal" tabindex="-1">
         <div class="modal-dialog">
@@ -126,8 +124,8 @@
       </figure>
     </div>
 
-
-    <div class="d-flex flex-row justify-content-evenly mt-4" id="membresias">
+   
+    <div id="membresias" class="d-flex flex-row justify-content-evenly mt-4" >
     
     </div>
 
@@ -135,11 +133,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Seleccione los gramos mensuales que desea</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            ...
+          <div class="modal-body" id="gramos">
+            10 / 15 / 20
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -149,26 +147,24 @@
       </div>
     </div>
    
-    <div id="carouselExampleControls" class="carousel slide mt-5  bg-dark bg-gradient" data-bs-ride="carousel">
-      <div class="carousel-inner" id="experiencias">
-       
+
+    <div class="">
+      <h4 class="text-center bg-warning p-2 f-6 mt-5 mx-5 rounded-pill border border-dark">Algunas reseñas de nuestros/as socios/as</h4>
+      <div id="experiencias" class="d-flex flex-row justify-content-evenly mt-4">
+
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
+
+
     <footer class="container-fluid mt-5 mb-2 my-0 bg-dark border rounded-pill p-2 border-end-0 border-bottom-0">
       <div class="row">
         <div class="col">
           <h2 class="fs-4 mt-2 text-light mx-3">La Sede crece</h2>
         </div>
-        <div class="col-6 fs-6 text-light">
+        <div class="col-3 fs-6 text-light">
           <img class="mx-2" src="/assets/icons/instagram.png" alt="logo instagram"> Instagram: lasedecc
+        </div>
+        <div class="col-3 fs-6 text-light">
           <img class="mx-2" src="/assets/icons/facebook.png" alt="logo facebook"> Facebook: La Sede CC
         </div>
         <div class="col text-light">

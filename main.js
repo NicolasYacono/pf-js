@@ -70,7 +70,7 @@ document.querySelector('#asesoramientoNav').innerHTML = anav;
 
 
 
-//DOM de membresias en las Cards
+//DOM de membresias 
 
 function mostrarMembresias (){
     const contenedor = document.querySelector('#membresias');
@@ -112,6 +112,7 @@ function agregarInfoUsuario(usuarioNuevo){
 
     usuario.innerText = usuarioNuevo.nombre;
     dni.innerText = usuarioNuevo.dni;
+
     // Local storage
     localStorage.setItem('Nombre', JSON.stringify(usuarioNuevo.nombre));
     localStorage.setItem('DNI', JSON.stringify(usuarioNuevo.dni));
@@ -145,8 +146,7 @@ function mostrarModal (){
  
 }
 
-
-
+//Class Experiencias
 class UsuariosExperiencias {
     constructor(nombre, edad, membresia, comentario){
         this.nombre = nombre;
@@ -156,34 +156,32 @@ class UsuariosExperiencias {
         }
     }
     
+    //Array con objetos, Experiencias
     const experiencias = [
-        new UsuariosExperiencias("Eli", "30", "Premium", "100% recomendada!!"),
+        new UsuariosExperiencias("Eli", "33", "Premium", "100% recomendada!!"),
         new UsuariosExperiencias ("Carlos", "45", "Clasica", "La calidad es exelente y el servicio tmb."),
         new UsuariosExperiencias ("Juan", "24", "Gratuita", "La consulta gratuita fue muy buena, voy por una membresia Premium!!"),
     ];
     
-    /* experiencias.push(new UsuariosExperiencias("Eli", "30", "Premium", "100% recomendada!!"));
-    experiencias.push(new UsuariosExperiencias("Carlos", "45", "Clasica", "La calidad es exelente y el servicio tmb."));
-    experiencias.push(new UsuariosExperiencias("Juan", "24", "Gratuita", "La consulta gratuita fue muy buena, voy por una membresia Premium!!"));
-     */
-    
-    
+    //DOM de experiencias 
     function expUsuarios(){
         const contenedor = document.querySelector('#experiencias');
     experiencias.forEach(experiencia => {
         contenedor.innerHTML += `
-        <div id="uE" class="carousel-item active text-center text-light">
-            <h4>Reseñas de nuestros socios/as</h4>
-            <p>Socio/a: ${experiencia.nombre}</p>
-            <p>Membresia: ${experiencia.membresia}</p>
-            <p>Edad: ${experiencia.edad}</p>
-            <h5>Reseña: ${experiencia.comentario}</h5>
+        <div class="card bg-dark bg-gradient text-dark text-center border border-warning border-start-0 border-top-0 mb-3 mx-3 my-3 mt-3 p-2" style="max-width: 18rem;"> 
+        <div class="card-header bg-warning bg-gradient">${experiencia.nombre} - ${experiencia.edad}</div>
+        <div class="card-body text-light">
+          <h5 class="card-title">${experiencia.membresia}</h5>
+          <p class="card-text">"${experiencia.comentario}"</p>
+        </div>
+        </div>
+        
     `
         });
     }
     expUsuarios();
   
-    
+
 
 /* while(dni.length >= 7){
     if(dni >= 45000000){
