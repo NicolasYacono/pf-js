@@ -105,6 +105,13 @@ class Usuario {
     }
 }
 
+//GET ITEM, tengo problemas con el scope creo
+/* 
+let usuario = localStorage.getItem('Nombre');
+let dni = localStorage.getItem('DNI');
+document.querySelector('#usuario1') = usuario;
+document.querySelector('#dniu') = dni; */
+
 //Agrego info que pone el usuario
 function agregarInfoUsuario(usuarioNuevo){
     const usuario = document.querySelector('#usuario1');
@@ -114,9 +121,10 @@ function agregarInfoUsuario(usuarioNuevo){
     dni.innerText = usuarioNuevo.dni;
 
     // Local storage
-    localStorage.setItem('Nombre', JSON.stringify(usuarioNuevo.nombre));
-    localStorage.setItem('DNI', JSON.stringify(usuarioNuevo.dni));
+    localStorage.setItem('Nombre', usuarioNuevo.nombre);
+    localStorage.setItem('DNI', usuarioNuevo.dni);
     
+
 }
 
 //Obtengo formulario
@@ -163,24 +171,41 @@ class UsuariosExperiencias {
         new UsuariosExperiencias ("Juan", "24", "Gratuita", "La consulta gratuita fue muy buena, voy por una membresia Premium!!"),
     ];
     
+    let exp1 = experiencias.find((item) => item.edad === '33');
+    let exp2 = experiencias.find((item) => item.edad === '45');
+    let exp3 = experiencias.find((item) => item.edad === '24');
+
     //DOM de experiencias 
     function expUsuarios(){
-        const contenedor = document.querySelector('#experiencias');
-    experiencias.forEach(experiencia => {
+        const contenedor = document.querySelector('#carouselExampleSlidesOnly');
         contenedor.innerHTML += `
-        <div class="card bg-dark bg-gradient text-dark text-center border border-warning border-start-0 border-top-0 mb-3 mx-3 my-3 mt-3 p-2" style="max-width: 18rem;"> 
-        <div class="card-header bg-warning bg-gradient">${experiencia.nombre} - ${experiencia.edad}</div>
-        <div class="card-body text-light">
-          <h5 class="card-title">${experiencia.membresia}</h5>
-          <p class="card-text">"${experiencia.comentario}"</p>
+        <div class="carousel-inner text-center mt-2 border border-warning bg-dark bg-gradient p-3">
+                <div class="carousel-item active">
+                    <h4 class="text-light">${exp1.nombre} - ${exp1.edad} años</h4>
+                    <div class="text-light">
+                        <h5>Membresia: ${exp1.membresia}</h5>
+                        <h5>"${exp1.comentario}"</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h4 class="text-light">${exp2.nombre} - ${exp2.edad} años</h4>
+                    <div class="text-light">
+                        <h5>Membresia: ${exp2.membresia}</h5>
+                        <h5>"${exp2.comentario}"</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h4 class="text-light">${exp3.nombre} - ${exp3.edad} años</h4>
+                    <div class="text-light">
+                        <h5> Membresia: ${exp3.membresia}</h5>
+                        <h5>"${exp3.comentario}"</h5>
+                    </div>
+                </div>
         </div>
-        </div>
-        
-    `
-        });
+        `
     }
     expUsuarios();
-  
+
 
 
 /* while(dni.length >= 7){

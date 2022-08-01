@@ -25,6 +25,38 @@
       </div>
     </div>
   </div>
+
+  <input type="checkbox" id="cerrar">
+  <label for="cerrar" id="btn-cerrar"></label>
+  <div class="modals">
+    <div class="contenido">
+      <div class="bg-dark text-light text-center mx-4 my-4 p-2 border-2 modal-title">
+
+        <h3>Bienvenida/o! Le informamos que necesita ser mayor de edad y poseer reprocann para poder inscribirse.</h3>
+        <h4>Ambos seran corroborados con el numero de DNI.</h4>
+    
+      </div>
+    
+      <form  id="formulario">
+        <div class="mb-0 mx-5 my-2">
+          <label class="form-label fw-bold">DNI</label>
+          <input id="dni" class="form-control" type="text" placeholder="Ingrese su DNI sin puntos">
+        </div>
+        <div class="mb-0 mx-5 my-2">
+          <label class="form-label fw-bold">Nombre</label>
+          <input id="nombre" class="form-control" type="text" placeholder="Ingrese su nombre">
+        </div>
+        <div class="d-grid gap-2 mx-5 my-3">
+          <button type="submit" class="btn btn-primary fw-bold">Registrar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <h1>MOdal</h1>
+
+
   <script src="/practica.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>

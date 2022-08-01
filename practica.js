@@ -28,3 +28,21 @@ function handelClick() {
 } */
 
 
+
+//DOM de experiencias recorriendo array con cards
+
+/*     function expUsuarios(){
+        const contenedor = document.querySelector('#experiencias');
+    experiencias.forEach(experiencia => {
+        contenedor.innerHTML += `
+        <div class="card bg-dark bg-gradient text-dark text-center border border-warning border-start-0 border-top-0 mb-3 mx-3 my-3 mt-3 p-2" style="max-width: 18rem;"> 
+            <div class="card-header bg-warning bg-gradient">${experiencia.nombre} - ${experiencia.edad}</div>
+            <div class="card-body text-light">
+                <h5 class="card-title">${experiencia.membresia}"</h5>
+                <p class="card-text">"${experiencia.comentario}"</p>
+            </div>
+        </div>
+        `
+        })
+    }
+    expUsuarios(); */
