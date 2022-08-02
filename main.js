@@ -24,9 +24,10 @@ let mpremium = membresias.find((item) => item.tipo === 'Premium');
 
 //Objeto Gramos
 class Gramos {
-    constructor(cantidad, precio){
+    constructor(cantidad, precio, membresia){
         this.cantidad = cantidad;
         this.precio = precio;
+        this.membresia = membresia;
     }
     membresiaMensual (){
        return this.cantidad * this.precio;
@@ -35,11 +36,11 @@ class Gramos {
 
 //Array objetos Gramos
 const gramosMensuales = [
-    new Gramos (3, 1100),
+    new Gramos (3, 1100, 'Clasica'),
     new Gramos (9, 1050),
     new Gramos (15, 950),
-    new Gramos (10, 1100),
-    new Gramos (20, 1000 ),
+    new Gramos (10, 1100, 'Premium'),
+    new Gramos (20, 1000),
     new Gramos (30, 950)
 ]
 
@@ -84,8 +85,8 @@ function mostrarMembresias (){
             <p id="incluye1" class="card-text"> ${membresia.gramos}</p>
             <p id="incluye1" class="card-text"> ${membresia.contenido}</p>
             <p id="incluye1" class="card-text"> ${membresia.asesoramiento}</p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Obtener
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
+            Abono segun gramos mensuales
             </button>
         </div>
     </div>
@@ -95,7 +96,35 @@ function mostrarMembresias (){
 mostrarMembresias();
 
 
-
+function gramosM (){
+    const contenedor = document.querySelector('#modalMembresias');
+    gramosMensuales.forEach(gramo => {
+        contenedor.innerHTML += `
+        <div class="modal fade" id="${gramo.membresia}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Gramos Mensuales / Membresia ${gramo.membresia}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio} <br>
+           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio} <br>
+           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Obtener membresia</button>
+          </div>
+        </div>
+        </div>
+      </div>
+        `
+    })
+    
+ 
+}
+gramosM();
 
 //Objeto Usuario modal
 class Usuario {
@@ -105,12 +134,7 @@ class Usuario {
     }
 }
 
-//GET ITEM, tengo problemas con el scope creo
-/* 
-let usuario = localStorage.getItem('Nombre');
-let dni = localStorage.getItem('DNI');
-document.querySelector('#usuario1') = usuario;
-document.querySelector('#dniu') = dni; */
+
 
 //Agrego info que pone el usuario
 function agregarInfoUsuario(usuarioNuevo){
@@ -121,11 +145,10 @@ function agregarInfoUsuario(usuarioNuevo){
     dni.innerText = usuarioNuevo.dni;
 
     // Local storage
-    localStorage.setItem('Nombre', usuarioNuevo.nombre);
-    localStorage.setItem('DNI', usuarioNuevo.dni);
-    
-
+    localStorage.setItem('nombre', usuarioNuevo.nombre);
+    localStorage.setItem('dni', usuarioNuevo.dni);
 }
+
 
 //Obtengo formulario
 const formualrio = document.querySelector('#formulario');
@@ -151,7 +174,7 @@ formulario.onsubmit = (event) => {
 window.addEventListener('DOMContentLoaded', mostrarModal);
 
 function mostrarModal (){ 
- 
+
 }
 
 //Class Experiencias
