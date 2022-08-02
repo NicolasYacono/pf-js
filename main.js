@@ -85,7 +85,7 @@ function mostrarMembresias (){
             <p id="incluye1" class="card-text"> ${membresia.gramos}</p>
             <p id="incluye1" class="card-text"> ${membresia.contenido}</p>
             <p id="incluye1" class="card-text"> ${membresia.asesoramiento}</p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
             Abono segun gramos mensuales
             </button>
         </div>
@@ -122,7 +122,6 @@ function gramosM (){
         `
     })
     
- 
 }
 gramosM();
 
@@ -135,20 +134,23 @@ class Usuario {
 }
 
 
-
 //Agrego info que pone el usuario
 function agregarInfoUsuario(usuarioNuevo){
     const usuario = document.querySelector('#usuario1');
     const dni = document.querySelector('#dniu');
 
+    
     usuario.innerText = usuarioNuevo.nombre;
+    
+    usuarioNuevo.dni > 1000000 ? dni.innerText : alert ('DNI INCORRECTO');
     dni.innerText = usuarioNuevo.dni;
+
 
     // Local storage
     localStorage.setItem('nombre', usuarioNuevo.nombre);
     localStorage.setItem('dni', usuarioNuevo.dni);
-}
 
+}
 
 //Obtengo formulario
 const formualrio = document.querySelector('#formulario');
@@ -158,6 +160,7 @@ formulario.onsubmit = (event) => {
     event.preventDefault();
     const dni = formualrio.dni.value;
     const nombre = formualrio.nombre.value;
+    
 
     // Creo objeto con info del usuario
     const usuarioNuevo = new Usuario(dni, nombre);
@@ -165,17 +168,26 @@ formulario.onsubmit = (event) => {
     
     //Llamo a la funcion con el objeto nuevo
     agregarInfoUsuario(usuarioNuevo);
+
+    formualrio.parentElement.parentElement.style.display = 'none';
+    
 }
 
 
+if(localStorage.getItem('nombre') || localStorage.getItem('dni')){
+    
+    const dni = localStorage.getItem('dni');
+    const nombre = localStorage.getItem('nombre');
 
-//Evento modal al cargar la pagina
+    const usuarioNuevo = new Usuario (dni, nombre);
 
-window.addEventListener('DOMContentLoaded', mostrarModal);
+    agregarInfoUsuario(usuarioNuevo);
 
-function mostrarModal (){ 
+    formualrio.parentElement.parentElement.style.display = 'none';
 
-}
+} 
+
+
 
 //Class Experiencias
 class UsuariosExperiencias {
