@@ -85,8 +85,8 @@ function mostrarMembresias (){
             <p id="incluye1" class="card-text"> ${membresia.gramos}</p>
             <p id="incluye1" class="card-text"> ${membresia.contenido}</p>
             <p id="incluye1" class="card-text"> ${membresia.asesoramiento}</p>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
-            Abono segun gramos mensuales
+            <button id="myBtn" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
+            Abono mensual
             </button>
         </div>
     </div>
@@ -94,6 +94,8 @@ function mostrarMembresias (){
     });
 }
 mostrarMembresias();
+
+
 
 
 function gramosM (){
@@ -138,22 +140,31 @@ class Usuario {
 function agregarInfoUsuario(usuarioNuevo){
     const usuario = document.querySelector('#usuario1');
     const dni = document.querySelector('#dniu');
-
     
-    usuario.innerText = usuarioNuevo.nombre;
-    
-    usuarioNuevo.dni > 1000000 ? dni.innerText : alert ('DNI INCORRECTO');
-    dni.innerText = usuarioNuevo.dni;
-
-
-    // Local storage
-    localStorage.setItem('nombre', usuarioNuevo.nombre);
-    localStorage.setItem('dni', usuarioNuevo.dni);
-
+    usuarioNuevo.dni;
+    usuarioNuevo.nombre;
+    if (usuarioNuevo.dni >= 45000000 || usuarioNuevo.nombre === null){
+        Toastify ({
+            text: 'DNI O USUARIO INCORRECTO',
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "#ff0000",
+            }
+        }).showToast();
+    } else {
+        dni.innerText = usuarioNuevo.dni;
+        usuario.innerText = usuarioNuevo.nombre;
+        localStorage.setItem('dni', usuarioNuevo.dni);
+        localStorage.setItem('nombre', usuarioNuevo.nombre);
+        formualrio.parentElement.parentElement.style.display = 'none'; 
+    }
 }
 
 //Obtengo formulario
 const formualrio = document.querySelector('#formulario');
+
 
 //Agrego evento al formulario
 formulario.onsubmit = (event) => {
@@ -164,12 +175,11 @@ formulario.onsubmit = (event) => {
 
     // Creo objeto con info del usuario
     const usuarioNuevo = new Usuario(dni, nombre);
+
     formulario.reset();
     
     //Llamo a la funcion con el objeto nuevo
     agregarInfoUsuario(usuarioNuevo);
-
-    formualrio.parentElement.parentElement.style.display = 'none';
     
 }
 
@@ -183,9 +193,10 @@ if(localStorage.getItem('nombre') || localStorage.getItem('dni')){
 
     agregarInfoUsuario(usuarioNuevo);
 
-    formualrio.parentElement.parentElement.style.display = 'none';
+    formualrio.parentElement.parentElement.style.display = 'none'; 
 
 } 
+
 
 
 

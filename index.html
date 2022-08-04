@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Sede CC</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,17 +13,23 @@
 
 
     <header class="container-fluid d-flex justify-content-center border-2 w-50 mt-2" >
-      <h1 class="text-success bg-dark bg-gradient mb-0 my-2 p-4 mx-1 fs-2 border rounded-pill border-end-0 border-bottom-0 text-light border-start-0">La Sede 
-        <small class="text-muted fs-5">Club Cannabico</small>
-      </h1>
-      <img style="height: fit-content" src="/assets/icons/icono-hoja.png" class="img-fluid p-2" alt="...">
-      <div class="d-flex flex-row-reverse mx-1 mt-4">
-        <img style="height:fit-content"  src="/assets/icons/icons8-usuario-30.png" alt="">
-        <p id="usuario1" class="fw-bold mx-2">Usuario</p>
-        <img style="height:fit-content" src="/assets/icons/icons8-pase-de-seguridad-24.png" alt="">
-        <p id="dniu" class="fw-bold mx-3">Dni</p>
+      <div  class="container-fluid d-flex justify-content-center border-2 w-50 mt-2">
+        <h1 class="text-success bg-dark bg-gradient mb-0 my-2 p-4 mx-1 fs-2 border rounded-pill border-end-0 border-bottom-0 text-light border-start-0">La Sede 
+          <small class="text-muted fs-5">Club Cannabico</small>
+        </h1>
+        <img style="height: fit-content" src="/assets/icons/icono-hoja.png" class="img-fluid p-2" alt="...">
+        <div class="d-flex flex-row mx-1 mt-4 position-relative">
+      </div>
+        <div class="position-absolute top-0 end-0">
+          <img style="height:fit-content"  src="/assets/icons/icons8-usuario-30.png" alt="">
+          <p id="usuario1" class="fw-bold mx-2">Usuario</p>
+          <img style="height:fit-content" src="/assets/icons/icons8-pase-de-seguridad-24.png" alt="">
+          <p id="dniu" class="fw-bold mx-3">Dni</p>
+          <button onclick="limpiarUsuario()">LIMPIAR</button>
+        </div>
       </div>
     </header>
+
     
     <div>
       <ul class="nav nav-pills justify-content-center mt-4 fw-bold">
@@ -111,8 +118,10 @@
       </div>
     </footer>
     
-    <script src="main.js"></script>
+  
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="main.js"></script>
 
 </body>
 </html>
