@@ -1,6 +1,6 @@
 //Membresias objeto
 class Membresia {
-    constructor(tipo, cursos, gramos, contenido, asesoramiento, imagen){
+    constructor(tipo, cursos, gramos, contenido, asesoramiento, imagen,){
         this.tipo = tipo;
         this.cursos = cursos;
         this.gramos = gramos;
@@ -24,9 +24,13 @@ let mpremium = membresias.find((item) => item.tipo === 'Premium');
 
 //Objeto Gramos
 class Gramos {
-    constructor(cantidad, precio, membresia){
+    constructor(cantidad, precio, cantidad1, precio1, cantidad2, precio2, membresia){
         this.cantidad = cantidad;
         this.precio = precio;
+        this.cantidad1 = cantidad1;
+        this.precio1 = precio1;
+        this.cantidad2 = cantidad2;
+        this.precio2 = precio2;
         this.membresia = membresia;
     }
     membresiaMensual (){
@@ -36,21 +40,9 @@ class Gramos {
 
 //Array objetos Gramos
 const gramosMensuales = [
-    new Gramos (3, 1100, 'Clasica'),
-    new Gramos (9, 1050),
-    new Gramos (15, 950),
-    new Gramos (10, 1100, 'Premium'),
-    new Gramos (20, 1000),
-    new Gramos (30, 950)
+    new Gramos (3, 1100, 9, 1050, 15, 950, 'Clasica'),
+    new Gramos (10, 1100, 20, 1000, 30, 950, 'Premium'),
 ]
-
-//Variables con los importes de las membresias segun gramos basados en gramosMensuaales
-const g3 = new Gramos (3, 1100);
-const g9 = new Gramos (9, 1050);
-const g15 = new Gramos (15, 950);
-const g10 = new Gramos (10, 1100);
-const g20 = new Gramos (20, 1000);
-const g30 = new Gramos (30, 950);
 
 
 
@@ -104,19 +96,18 @@ function gramosM (){
         contenedor.innerHTML += `
         <div class="modal fade" id="${gramo.membresia}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Gramos Mensuales / Membresia ${gramo.membresia}</h5>
+        <div class="modal-content bg-dark">
+          <div class="modal-header text-warning fw-bold">
+            <h5 class="modal-title text-center" id="staticBackdropLabel">Abonos Mensuales / Membresia ${gramo.membresia}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio} <br>
-           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio} <br>
-           ${gramo.cantidad} gramos = ${gramo.cantidad * gramo.precio}
+          <div class="modal-body fw-bold text-center">
+          <button type="button" class="btn btn-warning fw-bold"> ${gramo.cantidad} gramos = $${gramo.cantidad * gramo.precio} </button> <br>
+          <button type="button" class="btn btn-warning mt-2 fw-bold"> ${gramo.cantidad1} gramos = $${gramo.cantidad1 * gramo.precio1} </button> <br>
+          <button type="button" class="btn btn-warning mt-2 fw-bold"> ${gramo.cantidad2} gramos = $${gramo.cantidad2 * gramo.precio2} </button>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Obtener membresia</button>
           </div>
         </div>
         </div>
@@ -127,6 +118,7 @@ function gramosM (){
 }
 gramosM();
 
+
 //Objeto Usuario modal
 class Usuario {
     constructor(dni, nombre){
@@ -135,6 +127,12 @@ class Usuario {
     }
 }
 
+let btnLimpiar = document.getElementById('boton');
+
+btnLimpiar.addEventListener('click', e => {
+    e.preventDefault();
+    localStorage.clear();
+});
 
 //Agrego info que pone el usuario
 function agregarInfoUsuario(usuarioNuevo){
@@ -164,7 +162,6 @@ function agregarInfoUsuario(usuarioNuevo){
 
 //Obtengo formulario
 const formualrio = document.querySelector('#formulario');
-
 
 //Agrego evento al formulario
 formulario.onsubmit = (event) => {
@@ -196,7 +193,6 @@ if(localStorage.getItem('nombre') || localStorage.getItem('dni')){
     formualrio.parentElement.parentElement.style.display = 'none'; 
 
 } 
-
 
 
 
