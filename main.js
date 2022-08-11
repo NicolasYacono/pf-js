@@ -1,20 +1,21 @@
 //Membresias objeto
 class Membresia {
-    constructor(tipo, cursos, gramos, contenido, asesoramiento, imagen,){
+    constructor(tipo, cursos, gramos, contenido, asesoramiento, imagen, abono){
         this.tipo = tipo;
         this.cursos = cursos;
         this.gramos = gramos;
         this.contenido = contenido;
         this.asesoramiento = asesoramiento;
         this.imagen = imagen;
+        this.abono = abono;
     }
    
 }
 //Array objetos con membresias
 const membresias = [
-    new Membresia ('Gratuita', 'No incluye cursos', 'No incluye gramos mensuales', 'Contenido de la web', 'No incluye asesoramiento', '/assets/imgs/coco1.JPG'),
-    new Membresia ('Clasica', 'Cursos basicos', '3, 9 o 15 gramos mensuales', 'Contenido de la web', 'Primer asesoramiento gratis', '/assets/imgs/DSC_4530.JPG'),
-    new Membresia ('Premium', 'Todos los cursos online', '10, 20 o 30 gramos mensuales', 'Contenido de la web', 'Asesoramiento mensual',  '/assets/imgs/DSC_4537.JPG')
+    new Membresia ('Gratuita', 'No incluye cursos', 'No incluye gramos mensuales', 'Contenido de la web', 'No incluye asesoramiento', '/assets/imgs/coco1.JPG', 'No requiere abono'),
+    new Membresia ('Clasica', 'Cursos basicos', '3, 9 o 15 gramos mensuales', 'Contenido de la web', 'Primer asesoramiento gratis', '/assets/imgs/DSC_4530.JPG', 'Abono Mensual'),
+    new Membresia ('Premium', 'Todos los cursos online', '10, 20 o 30 gramos mensuales', 'Contenido de la web', 'Asesoramiento mensual',  '/assets/imgs/DSC_4537.JPG', 'Abono Mensual')
 ]
 
 // Membresias filtradas por metodo find para separarlas
@@ -40,29 +41,15 @@ class Gramos {
 
 //Array objetos Gramos
 const gramosMensuales = [
-    new Gramos (3, 1100, 9, 1050, 15, 950, 'Clasica'),
-    new Gramos (10, 1100, 20, 1000, 30, 950, 'Premium'),
+    new Gramos (3, 1100, 9, 1050, 15, 1000, 'Clasica'),
+    new Gramos (10, 1100, 20, 1000, 30, 900, 'Premium'),
 ]
 
-
-
-//ARRAY NAV - DOM
-let nav = ["Cursos", "Sepas", "Contenido", "Asesoramiento"];
-
-let cnav = `<a>${nav[0]}</a>`;
-document.querySelector('#cursosNav').innerHTML = cnav;
-
-let snav = `<a>${nav[1]}</a>`;
-document.querySelector('#sepasNav').innerHTML = snav;
-
-let conav = `<a>${nav[2]}</a>`;
-document.querySelector('#contenidoNav').innerHTML = conav;
-
-let anav = `<a>${nav[3]}</a>`;
-document.querySelector('#asesoramientoNav').innerHTML = anav;
-
-
-
+let clasicaM = gramosMensuales.find((item) => item.membresia === 'Clasica')
+let premiumM = gramosMensuales.find((item) => item.membresia === 'Premium')
+let arrayP = [];
+arrayP.push(clasicaM);
+console.log(clasicaM);
 //DOM de membresias 
 
 function mostrarMembresias (){
@@ -78,7 +65,7 @@ function mostrarMembresias (){
             <p id="incluye1" class="card-text"> ${membresia.contenido}</p>
             <p id="incluye1" class="card-text"> ${membresia.asesoramiento}</p>
             <button id="myBtn" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${membresia.tipo}">
-            Abono mensual
+            ${membresia.abono}
             </button>
         </div>
     </div>
@@ -88,8 +75,6 @@ function mostrarMembresias (){
 mostrarMembresias();
 
 
-
-
 function gramosM (){
     const contenedor = document.querySelector('#modalMembresias');
     gramosMensuales.forEach(gramo => {
@@ -97,15 +82,14 @@ function gramosM (){
         <div class="modal fade" id="${gramo.membresia}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content bg-dark">
-          <div class="modal-header text-warning fw-bold">
+          <div class="modal-header text-light fw-bold">
             <h5 class="modal-title text-center" id="staticBackdropLabel">Abonos Mensuales / Membresia ${gramo.membresia}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body fw-bold text-center">
-          <button type="button" class="btn btn-warning fw-bold"> ${gramo.cantidad} gramos = $${gramo.cantidad * gramo.precio} </button> <br>
-          <button type="button" class="btn btn-warning mt-2 fw-bold"> ${gramo.cantidad1} gramos = $${gramo.cantidad1 * gramo.precio1} </button> <br>
-          <button type="button" class="btn btn-warning mt-2 fw-bold"> ${gramo.cantidad2} gramos = $${gramo.cantidad2 * gramo.precio2} </button>
-
+          <button id="botonGramosMensuales" type="button" class="btn btn-warning fw-bold fs-5"> ${gramo.cantidad}g = $${gramo.cantidad * gramo.precio} </button> <br>
+          <button id="botonGramosMensuales" type="button" class="btn btn-warning mt-2 fw-bold fs-5"> ${gramo.cantidad1}g = $${gramo.cantidad1 * gramo.precio1} </button> <br>
+          <button id="botonGramosMensuales" type="button" class="btn btn-warning mt-2 fw-bold fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> ${gramo.cantidad2}g = $${gramo.cantidad2 * gramo.precio2} </button>
           </div>
           <div class="modal-footer">
           </div>
@@ -117,6 +101,44 @@ function gramosM (){
     
 }
 gramosM();
+
+
+
+function abonoM (){
+    const contenedor = document.querySelector('#modalAbonoYMembresia');
+    gramosMensuales.forEach(gramo => {
+        contenedor.innerHTML += `
+        <div class="mb-0 mx-5 my-2">
+        <label class="form-label fw-bold text-light">Membresia</label>
+        <input class="form-control" id="disabledInput" type="text" placeholder="${gramo.membresia}" disabled>
+      </div>
+      <div class="mb-0 mx-5 my-2">
+        <label class="form-label fw-bold text-light">Gramos y abono mensual</label>
+        <input class="form-control" id="disabledInput" type="text" placeholder="${gramo.precio}" disabled>
+      </div>
+        `
+    })
+}
+abonoM();
+
+/* let btnGramos = document.querySelector('#botonGramosMensuales1')
+
+btnGramos.addEventListener('click', e =>{
+const contenedor = document.querySelector('#modalAbonoYMembresia');
+arrayP.forEach (gramo => {
+    contenedor.innerHTML = `
+    <div class="mb-0 mx-5 my-2">
+    <label class="form-label fw-bold text-light">Membresia</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder="${gramo.membresia}" disabled>
+  </div>
+  <div class="mb-0 mx-5 my-2">
+    <label class="form-label fw-bold text-light">Gramos y abono mensual</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder="${gramo.precio}" disabled>
+  </div>
+    `
+})
+}) */
+
 
 
 //Objeto Usuario modal
@@ -132,6 +154,24 @@ let btnLimpiar = document.getElementById('boton');
 btnLimpiar.addEventListener('click', e => {
     e.preventDefault();
     localStorage.clear();
+    const usuario = document.querySelector('#usuario1');
+    const dni = document.querySelector('#dniu');
+    dni.innerText = 'DNI';
+    usuario.innerText = 'Usuario';
+    Toastify ({
+        text: 'DNI Y USUARIO LIMPIADOS',
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        style: {
+            background: "#ffff00",
+            color: "#3c3c3c",
+        }
+    }).showToast();
+    setTimeout(() => {
+        location. reload();
+    }, 1500)
+
 });
 
 //Agrego info que pone el usuario
@@ -141,7 +181,7 @@ function agregarInfoUsuario(usuarioNuevo){
     
     usuarioNuevo.dni;
     usuarioNuevo.nombre;
-    if (usuarioNuevo.dni >= 45000000 || usuarioNuevo.nombre === null){
+    if (usuarioNuevo.dni >= 45000000 || usuarioNuevo.dni.length === 0 ||usuarioNuevo.dni.length > 1000000  || usuarioNuevo.nombre === null || usuarioNuevo.nombre.length === 0 ){
         Toastify ({
             text: 'DNI O USUARIO INCORRECTO',
             duration: 3000,
@@ -247,51 +287,4 @@ class UsuariosExperiencias {
         `
     }
     expUsuarios();
-
-
-
-/* while(dni.length >= 7){
-    if(dni >= 45000000){
-        console.log("Lo sentimos es menor de edad")
-    } else {
-        let nombre = prompt("Ingrese su nombre");
-        console.log(`Hola ${nombre} le informamos a continuacion nuestras membresias:`);
-        for (const objeto of membresias){
-            console.log(`${objeto.tipo}: \n ${objeto.cursos} \n ${objeto.gramos} \n ${objeto.contenido} \n ${objeto.asesoramiento}`)
-        };
-        let membresiaElegida = Number(prompt("Ingrese el numero del tipo de membresia que desea \n1 - Premium \n2 - Clasica\n3 - Gratuita"));
-            if(membresiaElegida === 3 ){
-            console.log(`Usted ha seleccionado membresia ${mgratuita.tipo}: \n ${mgratuita.cursos} \n ${mgratuita.gramos} \n ${mgratuita.contenido} \n ${mgratuita.asesoramiento}`);
-             dni=3; 
-            } else if (membresiaElegida === 2){
-                console.log(`Usted ha seleccionado membresia ${mclasica.tipo}: \n ${mclasica.cursos} \n ${mclasica.gramos} \n ${mclasica.contenido} \n ${mclasica.asesoramiento}`);
-                const gramos1 = Number(prompt("Ingrese la cantidad de gramos que desea 3, 9 o 15"));
-                if(gramos1 === 5){
-                    console.log(`Abono mensual por 3gr: $${g3.membresiaMensual()}`)
-                } else if (gramos1 === 10) {
-                    console.log(`Abono mensual por 9gr: $${g9.membresiaMensual()}`)
-                } else {
-                    console.log(`Abono mensual por 15gr: $${g15.membresiaMensual()}`)
-                }
-                dni=3; 
-            } else if (membresiaElegida === 1){
-                console.log(`Usted ha seleccionado membresia ${mpremium.tipo}: \n ${mpremium.cursos} \n ${mpremium.gramos} \n ${mpremium.contenido} \n ${mpremium.asesoramiento}`);
-                const gramos1 = Number(prompt("Ingrese la cantidad de gramos que desea 10, 20 o 30"));
-                if(gramos1 === 10){
-                    console.log(`Abono mensual por 10gr: $${g10.membresiaMensual()}`)
-                } else if (gramos1 === 20) {
-                    console.log(`Abono mensual por 20gr: $${g20.membresiaMensual()}`)
-                } else {
-                    console.log(`Abono mensual por 30gr: $${g30.membresiaMensual()}`)
-                }
-                dni=3; 
-            }else{
-                console.log("Lo sentimos el numero ingresado es incorrecto")
-                console.log("Gracias por su visita!")
-                dni=3; 
-            } 
-    } 
-    
-}; 
- */
 
