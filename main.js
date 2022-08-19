@@ -25,7 +25,7 @@ class Membresia {
 }
 
 const membresias = [
-  new Membresia('Gratuita', 'No incluye cursos', 'No incluye gramos mensuales', 'Contenido de la web', 'No incluye asesoramiento', '/assets/imgs/coco1.JPG', 'No requiere abono'),
+  new Membresia('Gratuita', 'No incluye cursos', 'No incluye gramos mensuales', 'Contenido de la web', 'No incluye asesoramiento', '/assets/imgs/coco1.JPG', 'Podrá Ingresar en 24hs'),
   new Membresia('Clasica', 'Cursos basicos', '3, 9 o 15 gramos mensuales', 'Contenido de la web', 'Primer asesoramiento gratis', '/assets/imgs/DSC_4530.JPG', 'Abono Mensual'),
   new Membresia('Premium', 'Todos los cursos online', '10, 20 o 30 gramos mensuales', 'Contenido de la web', 'Asesoramiento mensual', '/assets/imgs/DSC_4537.JPG', 'Abono Mensual'),
 ];
