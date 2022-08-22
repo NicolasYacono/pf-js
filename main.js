@@ -29,9 +29,6 @@ const membresias = [
   new Membresia('Clasica', 'Cursos basicos', '3, 9 o 15 gramos mensuales', 'Contenido de la web', 'Primer asesoramiento gratis', '/assets/imgs/DSC_4530.JPG', 'Abono Mensual'),
   new Membresia('Premium', 'Todos los cursos online', '10, 20 o 30 gramos mensuales', 'Contenido de la web', 'Asesoramiento mensual', '/assets/imgs/DSC_4537.JPG', 'Abono Mensual'),
 ];
-let mgratuita = membresias.find((item) => item.tipo === 'Gratuita');
-let mclasica = membresias.find((item) => item.tipo === 'Clasica');
-let mpremium = membresias.find((item) => item.tipo === 'Premium');
 
 class Gramos {
   constructor(cantidad, precio, cantidad1, precio1, cantidad2, precio2, membresia) {
@@ -188,7 +185,6 @@ btnLimpiar.addEventListener('click', (e) => {
 function agregarInfoUsuario(usuarioNuevo) {
   const usuario = document.querySelector('#usuario1');
   const dni = document.querySelector('#dniu');
-
   const expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
   const validarM = expReg.test(usuarioNuevo.nombre);
   usuarioNuevo.dni;
